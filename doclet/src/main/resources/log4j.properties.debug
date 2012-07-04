@@ -1,0 +1,17 @@
+# Log4J configuration
+log4j.rootLogger=ERROR, Console
+log4j.logger.com.iggroup.oss.restdoclet = DEBUG
+log4j.logger.org.springframework = ERROR
+
+# Console
+log4j.appender.Console=org.apache.log4j.ConsoleAppender
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+log4j.appender.Console.layout.ConversionPattern=[%-4p] %c.%M() %m%n
+
+# Log
+log4j.appender.Log = org.apache.log4j.RollingFileAppender
+log4j.appender.Log.File = logs/wt-referencerest.log
+log4j.appender.Log.MaxFileSize = 20000KB
+log4j.appender.Log.MaxBackupIndex = 20
+log4j.appender.Log.Append = true
+log4j.appender.Log.layout = org.apache.log4j.PatternLayout

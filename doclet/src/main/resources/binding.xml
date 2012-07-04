@@ -1,0 +1,113 @@
+<binding>
+
+	<mapping name="service" class="com.iggroup.oss.restdoclet.doclet.type.Service">
+		<value name="identifier" field="identifier" />
+		<collection field="uris"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.Uri"
+			create-type="java.util.ArrayList" />
+		<structure name="controller" field="controller">
+			<value name="type" field="type" />
+			<value name="javadoc" field="javadoc" usage="optional" />
+			<collection field="methods" item-type="com.iggroup.oss.restdoclet.doclet.type.Method"
+				create-type="java.util.ArrayList" />
+		</structure>
+	</mapping>
+
+	<mapping name="controller" class="com.iggroup.oss.restdoclet.doclet.type.Controller">
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+		<collection field="methods" item-type="com.iggroup.oss.restdoclet.doclet.type.Method"
+			create-type="java.util.ArrayList" />
+	</mapping>
+
+	<mapping name="method" class="com.iggroup.oss.restdoclet.doclet.type.Method">
+		<value name="name" field="name" />
+		<value name="request-method" field="requestMethod" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+		<collection field="uris" item-type="com.iggroup.oss.restdoclet.doclet.type.Uri" create-type="java.util.ArrayList" />
+		<collection field="responseParams"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.ResponseParameter" create-type="java.util.ArrayList" />
+		<collection field="restParams"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.RestParameter" create-type="java.util.ArrayList" />
+		<collection field="requestParams"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.RequestParameter" create-type="java.util.ArrayList" />
+		<collection field="pathParams"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.PathParameter" create-type="java.util.ArrayList" />
+		<collection field="modelParams"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.ModelParameter" create-type="java.util.ArrayList" />
+		<collection field="bodyParams"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.BodyParameter" create-type="java.util.ArrayList" />
+	</mapping>
+
+
+	<mapping name="uri" class="com.iggroup.oss.restdoclet.doclet.type.Uri">
+		<value name="uri" field="uri" />
+		<value name="deprecated" field="deprecated" />
+		<value name="type" field="type" />
+	</mapping>
+
+	<mapping name="response-param" class="com.iggroup.oss.restdoclet.doclet.type.ResponseParameter">
+		<value name="name" field="name" />
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+	</mapping>
+
+	<mapping name="rest-param" class="com.iggroup.oss.restdoclet.doclet.type.RestParameter">
+		<value name="name" field="name" />
+		<value name="value" field="value" usage="optional" />
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+	</mapping>
+
+	<mapping name="request-param" class="com.iggroup.oss.restdoclet.doclet.type.RequestParameter">
+		<value name="name" field="name" />
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+		<value name="required" field="required" />
+		<value name="defaultValue" field="defaultValue" />
+	</mapping>
+
+	<mapping name="path-param" class="com.iggroup.oss.restdoclet.doclet.type.PathParameter">
+		<value name="name" field="name" />
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+	</mapping>
+
+	<mapping name="model-param" class="com.iggroup.oss.restdoclet.doclet.type.ModelParameter">
+		<value name="name" field="name" />
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+		<collection field="fields"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.FieldParameter" create-type="java.util.ArrayList" />
+	</mapping>
+
+	<mapping name="body-param" class="com.iggroup.oss.restdoclet.doclet.type.BodyParameter">
+		<value name="name" field="name" />
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+		<collection field="fields"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.FieldParameter" create-type="java.util.ArrayList" />
+	</mapping>
+
+	<mapping name="field-param" class="com.iggroup.oss.restdoclet.doclet.type.FieldParameter">
+		<value name="name" field="name" />
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+	</mapping>
+
+	<mapping name="services" class="com.iggroup.oss.restdoclet.doclet.type.Services">
+		<collection field="controllers"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.ControllerSummary"
+			create-type="java.util.ArrayList" />
+	</mapping>
+
+	<mapping name="controller-summary"
+		class="com.iggroup.oss.restdoclet.doclet.type.ControllerSummary">
+		<value name="type" field="type" />
+		<value name="javadoc" field="javadoc" usage="optional" />
+		<collection field="services"
+			item-type="com.iggroup.oss.restdoclet.doclet.type.Service"
+			create-type="java.util.ArrayList" />
+	</mapping>
+
+</binding>

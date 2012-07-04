@@ -1,0 +1,205 @@
+
+body {
+   font-size: 16px;
+   font-family: arial, helvetica clean, sans-serif;
+}
+
+h1, h2, h3 {
+   font-family: Georgia,serif;
+}
+
+div.header {
+   margin-bottom: 20px;
+   position:fixed;
+   background-color: #034;
+   color:white;
+   width:100%;
+   height:67px;
+   box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+   border-bottom: 1px black solid;
+}
+
+div.header h1 {
+   font-size: 250%;
+   margin:15px 10px 10px 10px;
+}
+
+#searchBox {
+   float:right;
+   margin-right:10px;
+   margin-top:23px;
+}
+
+div.applications {
+   float:left;
+   width: 195px;
+   padding-left:10px;
+   padding-top:90px;
+}
+div.applications h1 {
+   padding: 5px 10px;
+   margin-bottom:5px;
+   font-size:150%;
+}
+div.applications ul {
+   margin-left:10px;
+}
+div.applications li {
+   margin-top:4px;
+}
+a {
+   text-decoration: none;
+}
+a:hover {
+   text-decoration: underline;
+}
+
+div.main {
+   padding: 90px 20px 0 220px;
+}
+
+.deprecated {
+   visibility: hidden;
+}
+
+.showDeprecated .deprecated {
+   visibility: visible;
+}
+
+.deprecatedLabel {
+   color:#f64;
+}
+
+.showDeprecatedWrapper {
+   margin:10px;
+}
+
+.projectDetails h1 {
+   font-size:150%;
+   margin-bottom: 20px;
+}
+.projectDetails h2 {
+   margin-top: 7px;
+}
+
+.projectDetails em {
+   font-weight: bold;
+   color:white;
+   display: inline-block;
+   margin-left:5px;
+}
+
+div.services td.uri {
+   width:30em;
+}
+
+.projectDetails {
+   background: #034;
+   border-radius: 10px;
+   color:#ddd;
+   min-height:50px;
+   margin:0 0 10px 10px;
+   padding: 15px;
+}
+
+.projectDetails span {
+   display: inline-block;
+   margin-right: 20px;
+}
+
+.projectDetails span.path {
+   margin-right: 0px;
+   margin-left: 20px;
+}
+
+.projectDetails .artifactId {
+   color:#dff;
+}
+
+.projectDetails .version {
+   color: #dfd;
+}
+
+.projectDetails .timestamp {
+   color: #fdd;
+}
+
+.projectDetails a {
+   color: #fff;
+   text-decoration: underline;
+}
+
+.services {
+   margin-left:10px;
+}
+
+td, th {
+   padding: 3px;
+}
+
+table.topLevel > tbody > tr > td {
+   border:1px #656C72 solid;
+}
+td {
+   border:1px #bbb solid;
+}
+
+table.methods,
+table.methods td {
+   border:0;
+}
+
+th {
+   background-color: #eee;
+   color:#666;
+   text-align: left;
+   border: 1px #656C72 solid;
+}
+
+td.requestMethod {
+   width:5em;
+}
+
+table {
+   width: 100%;
+}
+
+table table {
+   margin:10px auto 10px auto;
+   width:90%;
+}
+
+.method {
+   margin:10px 0 50px 10px;
+}
+
+table.methodDetails td.type,
+table.methodDetails td.name {
+   width: 15em;
+}
+
+p.methodJsDoc {
+   font-style: italic;
+}
+
+div.input > h3,
+div.response > h3 {
+   border-radius: 8px 8px 0 0;
+   /*background: #656C72 url(../img/header.png) repeat-x;*/
+   background: #034;
+   padding:5px 15px;
+   color:white;
+}
+
+div.response h3 {
+   background-color: #043;
+}
+
+div.input, div.response {
+   margin-top: 10px;
+}
+
+div.method > h3.httpMethod {
+   font-weight: bold;
+   font-size:150%;
+}
