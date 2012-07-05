@@ -10,25 +10,25 @@
 	<inceptionYear>2012</inceptionYear>
 	<organization>
 		<name>IG Group</name>
-      <url>http://ig-group.github.com/</url>
+		<url>http://ig-group.github.com/</url>
 	</organization>
-   <description>Maven plugin for generating REST service documentation from Spring 3</description>
-   <url>http://github.com/IG-Group/RESTdoclet</url>
-   <licenses>
-      <license>
-         <name>The Apache Software License, Version 2.0</name>
-         <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-         <distribution>repo</distribution>
-      </license>
-   </licenses>
-   <developers>
-      <developer>
-         <name>Robert Morschel</name>
-         <email>robert.morschel@iggroup.com</email>
-      </developer>
-   </developers>
+	<description>Maven plugin for generating REST service documentation from Spring 3</description>
+	<url>http://github.com/IG-Group/RESTdoclet</url>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Robert Morschel</name>
+			<email>robert.morschel@iggroup.com</email>
+		</developer>
+	</developers>
 
-   <properties>
+	<properties>
 		<commons-codec.version>1.3</commons-codec.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<commons-io.version>1.4</commons-io.version>
@@ -47,12 +47,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-
-			<dependency>
-				<groupId>com.sun</groupId>
-				<artifactId>tools</artifactId>
-				<version>1.5.1</version>
-			</dependency>
 
 			<dependency>
 				<groupId>commons-codec</groupId>
@@ -108,6 +102,24 @@
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
 				<version>${log4j.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.jms</groupId>
+						<artifactId>jms</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.jms</groupId>
+						<artifactId>jms</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.jmx</groupId>
+						<artifactId>jmxri</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.jdmk</groupId>
+						<artifactId>jmxtools</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 
 			<dependency>
@@ -177,21 +189,6 @@
 				<version>${spring.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jms</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
@@ -304,42 +301,40 @@
 					</configuration>
 				</plugin>
 
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.3.1</version>
+					<executions>
+						<execution>
+							<id>tools-install</id>
+							<phase>validate</phase>
+							<configuration>
+								<file>${java.home}/../lib/tools.jar</file>
+								<repositoryLayout>default</repositoryLayout>
+								<groupId>com.sun</groupId>
+								<artifactId>tools</artifactId>
+								<version>1.4.2</version>
+								<packaging>jar</packaging>
+								<generatePom>true</generatePom>
+							</configuration>
+							<goals>
+								<goal>install-file</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
-		<!--
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<inherited>true</inherited>
-				<configuration>
-					<verbose>true</verbose>
-					<addSvnKeyWords>false</addSvnKeyWords>
-					<dryRun>false</dryRun>
-				</configuration>
-				<executions>
-					<execution>
-						<id>copyright headers</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>update-file-header</goal>
-						</goals>
-						<configuration>
-							<licenseName>apache_v2</licenseName>
-							<roots>
-								<root>src/main/java</root>
-								<root>src/test</root>
-							</roots>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-		</plugins>
-        -->
+		<!-- <plugins> <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>license-maven-plugin</artifactId> 
+			<inherited>true</inherited> <configuration> <verbose>true</verbose> <addSvnKeyWords>false</addSvnKeyWords> 
+			<dryRun>false</dryRun> </configuration> <executions> <execution> <id>copyright 
+			headers</id> <phase>process-sources</phase> <goals> <goal>update-file-header</goal> 
+			</goals> <configuration> <licenseName>apache_v2</licenseName> <roots> <root>src/main/java</root> 
+			<root>src/test</root> </roots> </configuration> </execution> </executions> 
+			</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+			</plugin> </plugins> -->
 	</build>
 	<scm>
 		<connection>scm:svn:http://svn.iggroup.local/repos/SandBox/RESTDoc-OSS</connection>

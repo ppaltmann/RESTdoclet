@@ -67,20 +67,6 @@
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
 
-		<!-- SPRING DATA ACCESS / INTEGRATION -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jms</artifactId>
-		</dependency>
-
 		<!-- SPRING WEB -->
 		<dependency>
 			<groupId>org.springframework</groupId>
