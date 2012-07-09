@@ -22,7 +22,7 @@ package com.iggroup.oss.restdoclet.doclet.type;
 /**
  * This class creates a response-parameter.
  */
-public class ResponseParameter extends AbstractDocType {
+public class ResponseParameter extends BaseType {
 
    /**
     * No-argument constructor for this class to be used as a bean or by JiBX
@@ -40,7 +40,7 @@ public class ResponseParameter extends AbstractDocType {
     * @param javadoc the parameter's documentation.
     */
    public ResponseParameter(final String name, final String type,
-      final String javadoc) {
+                            final String javadoc) {
       super(name, name, javadoc);
       assertValid();
    }

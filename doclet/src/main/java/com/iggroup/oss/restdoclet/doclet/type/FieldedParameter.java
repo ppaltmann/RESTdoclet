@@ -19,23 +19,15 @@
  */
 package com.iggroup.oss.restdoclet.doclet.type;
 
-import static org.apache.commons.lang.StringUtils.isBlank;
-
 import java.util.Collection;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-import com.iggroup.oss.restdoclet.doclet.util.DocletUtils;
-import com.sun.javadoc.AnnotationValue;
-import com.sun.javadoc.ClassDoc;
-import com.sun.javadoc.ParamTag;
-import com.sun.javadoc.Parameter;
-
 /**
  * This class creates documentation for a model-parameter.
  */
-public abstract class FieldedParameter extends AbstractDocType {
+public abstract class FieldedParameter extends BaseType {
 
    /**
     * The field-parameters in this model-parameter.
@@ -50,58 +42,6 @@ public abstract class FieldedParameter extends AbstractDocType {
       super();
    }
 
-   /**
-    * Constructs this parameter from its Java documentation object and Java
-    * documentation tags of the parameters of the method it belongs to.
-    * 
-    * @param param the parameter's Java documentation object.
-    * @param tags the Java documentation tags of the parameters of the method
-    *           this parameter belongs to.
-    */
-   public FieldedParameter(final Parameter param, final ParamTag[] tags) {
-      super(param, tags);
-      initName(param);
-      initFields(param.type().asClassDoc());
-   }
-
-   /**
-    * Initialises the field-parameters in this model-parameter.
-    * 
-    * @param classDoc the parameter's Java documentation object.
-    */
-   private void initFields(final ClassDoc classDoc) {
-
-      fields = DocletUtils.getPublicFields(classDoc);
-
-   }
-
-   /**
-    * Initialises the name of this parameter.
-    * 
-    * @param param the parameter's Java documentation object.
-    */
-   private void initName(final Parameter param) {
-
-      final AnnotationValue value = getAnnotationValue(param);
-      if (value == null) {
-         setName(param.name());
-      } else {
-         if (isBlank(value.value().toString())) {
-            setName(param.name());
-         } else {
-            setName(value.value().toString().trim());
-         }
-      }
-   }
-
-   /**
-    * Abstract method to determine annotation value from a parameter for a
-    * particular parameter subtype
-    * 
-    * @param param paramter
-    * @return annotation value
-    */
-   protected abstract AnnotationValue getAnnotationValue(final Parameter param);
 
    /**
     * Gets the field-parameters of this parameter.

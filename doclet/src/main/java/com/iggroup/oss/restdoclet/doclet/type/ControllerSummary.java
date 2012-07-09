@@ -31,7 +31,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
  * 
  * @see Service
  */
-public class ControllerSummary extends AbstractDocType {
+public class ControllerSummary extends BaseType {
 
    /**
     * The services supported by this controller.
@@ -107,8 +107,8 @@ public class ControllerSummary extends AbstractDocType {
    @Override
    public String toString() {
       return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-         .append("type", super.toString()).append("services", services)
-         .toString();
+      .append("type", super.toString()).append("services", services)
+      .toString();
    }
 
 }

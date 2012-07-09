@@ -28,6 +28,7 @@ import org.apache.log4j.Logger;
 import org.jibx.runtime.JiBXException;
 
 import com.iggroup.oss.restdoclet.doclet.type.Controller;
+import com.iggroup.oss.restdoclet.doclet.type.builder.ControllerBuilder;
 import com.iggroup.oss.restdoclet.doclet.util.DocletUtils;
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.Doclet;
@@ -78,7 +79,8 @@ public final class XmlDoclet extends Doclet {
             org.springframework.stereotype.Controller.class)) {
             LOG.info("Found controller.  Generating javadoc xml for "
                + classDoc.qualifiedName() + ".java");
-            marshallController(new Controller(classDoc),
+            marshallController(
+               new ControllerBuilder().build(new Controller(), classDoc),
                DocletUtils.documentationFile(classDoc));
             found = true;
          }

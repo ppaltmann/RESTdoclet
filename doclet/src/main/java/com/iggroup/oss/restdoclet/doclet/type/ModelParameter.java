@@ -19,13 +19,6 @@
  */
 package com.iggroup.oss.restdoclet.doclet.type;
 
-import static com.iggroup.oss.restdoclet.doclet.util.AnnotationUtils.elementValue;
-
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import com.sun.javadoc.AnnotationValue;
-import com.sun.javadoc.ParamTag;
-import com.sun.javadoc.Parameter;
 
 /**
  * This class creates documentation for a model-parameter.
@@ -38,24 +31,6 @@ public class ModelParameter extends FieldedParameter {
     */
    public ModelParameter() {
       super();
-   }
-
-   /**
-    * Constructs this parameter from its Java documentation object and Java
-    * documentation tags of the parameters of the method it belongs to.
-    * 
-    * @param param the parameter's Java documentation object.
-    * @param tags the Java documentation tags of the parameters of the method
-    *           this parameter belongs to.
-    */
-   public ModelParameter(final Parameter param, final ParamTag[] tags) {
-      super(param, tags);
-      assertValid();
-   }
-
-   @Override
-   protected AnnotationValue getAnnotationValue(final Parameter param) {
-      return elementValue(param, ModelAttribute.class, "value");
    }
 
 }

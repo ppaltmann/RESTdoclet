@@ -19,23 +19,17 @@
  */
 package com.iggroup.oss.restdoclet.doclet.type;
 
-import static com.iggroup.oss.restdoclet.doclet.util.AnnotationUtils.isAnnotated;
-
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.apache.log4j.Logger;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.sun.javadoc.ClassDoc;
 
 /**
  * This class creates documentation for Spring's controllers. The classes
  * should be annotated with <code>@Controller</code>.
  */
-public class Controller extends AbstractDocType {
+public class Controller extends BaseType {
 
    /**
     * Logger
@@ -79,36 +73,6 @@ public class Controller extends AbstractDocType {
       this.methods = methods;
    }
 
-   /**
-    * Constructs this controller using its Java documentation object.
-    * 
-    * @param classDoc the controller's Java documentation object.
-    */
-   public Controller(final ClassDoc classDoc) {
-      super(classDoc);
-      initMethods(classDoc);
-   }
-
-   /**
-    * Initialises the methods in this controller annotated with
-    * <code>@RequestMapping</code> in the source class.
-    * 
-    * @param classDoc the controller's Java documentation object.
-    */
-   private void initMethods(final ClassDoc classDoc) {
-
-      methods = new ArrayList<Method>();
-      for (int i = 0; classDoc.methods(false) != null
-         && i < classDoc.methods(false).length; i++) {
-         if (isAnnotated(classDoc.methods(false)[i], RequestMapping.class)) {
-            methods.add(new Method(classDoc.methods(false)[i]));
-         }
-      }
-
-      if (methods.size() == 0) {
-         LOG.warn("No methods found with @RequestMapping tag");
-      }
-   }
 
    /**
     * Gets the methods in this controller annotated with

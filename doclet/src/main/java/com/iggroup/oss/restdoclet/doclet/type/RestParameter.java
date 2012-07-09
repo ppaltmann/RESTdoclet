@@ -29,7 +29,7 @@ import com.iggroup.oss.restdoclet.doclet.util.NameValuePair;
  * parameters not in the arguments of a method but defined in
  * <code>@RequestMapping</code> annotation.
  */
-public class RestParameter extends AbstractDocType {
+public class RestParameter extends BaseType {
 
    /**
     * The value of this parameter.
@@ -102,7 +102,7 @@ public class RestParameter extends AbstractDocType {
    @Override
    public String toString() {
       return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-         .append(super.toString()).append("value", value).toString();
+      .append(super.toString()).append("value", value).toString();
    }
 
 }

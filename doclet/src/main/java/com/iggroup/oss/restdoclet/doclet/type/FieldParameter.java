@@ -19,14 +19,12 @@
  */
 package com.iggroup.oss.restdoclet.doclet.type;
 
-import com.iggroup.oss.restdoclet.doclet.util.DocTypeUtils;
-import com.sun.javadoc.FieldDoc;
 
 /**
  * This class creates documentation for a field-parameter. These parameters are
  * fields in method-arguments annotated with <code>@ModelAttribute</code>.
  */
-public class FieldParameter extends AbstractDocType {
+public class FieldParameter extends BaseType {
 
    /**
     * No-argument constructor for this class to be used as a bean or by JiBX
@@ -47,15 +45,5 @@ public class FieldParameter extends AbstractDocType {
       assertValid();
    }
 
-   /**
-    * Constructs this parameter with its Java documentation object.
-    * 
-    * @param fieldDoc the field's Java documentation object.
-    */
-   public FieldParameter(final FieldDoc fieldDoc) {
-      super(fieldDoc.name(), DocTypeUtils.getTypeName(fieldDoc.type()),
-         fieldDoc.commentText());
-      assertValid();
-   }
 
 }

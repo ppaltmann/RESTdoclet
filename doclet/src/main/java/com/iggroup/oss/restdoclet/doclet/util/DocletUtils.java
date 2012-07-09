@@ -32,6 +32,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import com.iggroup.oss.restdoclet.doclet.type.Controller;
 import com.iggroup.oss.restdoclet.doclet.type.FieldParameter;
+import com.iggroup.oss.restdoclet.doclet.type.builder.FieldParameterBuilder;
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.FieldDoc;
 import com.sun.javadoc.MethodDoc;
@@ -181,7 +182,8 @@ public final class DocletUtils {
          }
 
          if (found) {
-            fields.add(new FieldParameter(fieldDoc));
+            fields.add(new FieldParameterBuilder().build(new FieldParameter(),
+               fieldDoc));
          }
       }
 

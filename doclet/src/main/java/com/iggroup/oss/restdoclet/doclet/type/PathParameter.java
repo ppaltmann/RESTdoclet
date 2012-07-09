@@ -19,20 +19,12 @@
  */
 package com.iggroup.oss.restdoclet.doclet.type;
 
-import static com.iggroup.oss.restdoclet.doclet.util.AnnotationUtils.elementValue;
-
-import org.apache.commons.lang.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import com.sun.javadoc.AnnotationValue;
-import com.sun.javadoc.ParamTag;
-import com.sun.javadoc.Parameter;
 
 /**
  * This class creates documentation for a path-parameter. These parameters are
  * method-arguments annotated with <code>@PathParam</code>.
  */
-public class PathParameter extends AbstractDocType {
+public class PathParameter extends BaseType {
 
    /**
     * No-argument constructor for this class to be used as a bean or by JiBX
@@ -42,42 +34,5 @@ public class PathParameter extends AbstractDocType {
       super();
    }
 
-   /**
-    * Constructs this parameter from its Java documentation object and Java
-    * documentation tags of the parameters of the method it belongs to.
-    * <p>
-    * The name of this parameter is the value of <code>@PathParam</code>
-    * annotation. If not defined, the name of its argument is used.
-    * 
-    * @param param the parameter's Java documentation object.
-    * @param tags the Java documentation tags of the parameters of the method
-    *           this parameter belongs to.
-    */
-   public PathParameter(final Parameter param, final ParamTag[] tags) {
-      super();
-      initName(param);
-      initType(param);
-      initJavadoc(param, tags);
-      assertValid();
-   }
-
-   /**
-    * Initialises the name of this parameter.
-    * 
-    * @param param the parameter's Java documentation object.
-    */
-   private void initName(final Parameter param) {
-      final AnnotationValue value =
-         elementValue(param, PathVariable.class, "value");
-      if (value == null) {
-         setName(param.name());
-      } else {
-         if (StringUtils.isBlank(value.value().toString())) {
-            setName(param.name());
-         } else {
-            setName(value.value().toString().trim());
-         }
-      }
-   }
 
 }

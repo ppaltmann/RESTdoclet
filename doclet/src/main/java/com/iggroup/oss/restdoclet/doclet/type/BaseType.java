@@ -1,21 +1,12 @@
 /*
- * #%L
- * restdoc-doclet
- * %%
- * Copyright (C) 2012 IG Group
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * #L%
+ * #%L restdoc-doclet %% Copyright (C) 2012 IG Group %% Licensed under the
+ * Apache License, Version 2.0 (the "License"); you may not use this file
+ * except in compliance with the License. You may obtain a copy of the License
+ * at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable
+ * law or agreed to in writing, software distributed under the License is
+ * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License. #L%
  */
 package com.iggroup.oss.restdoclet.doclet.type;
 
@@ -36,12 +27,12 @@ import com.sun.javadoc.Parameter;
 /**
  * Base class for doclet types
  */
-public abstract class AbstractDocType implements Comparable<AbstractDocType> {
+public abstract class BaseType implements Comparable<BaseType> {
 
    /**
     * Logger
     */
-   private static final Logger LOG = Logger.getLogger(AbstractDocType.class);
+   private static final Logger LOG = Logger.getLogger(BaseType.class);
 
    /**
     * The name of this parameter.
@@ -61,7 +52,7 @@ public abstract class AbstractDocType implements Comparable<AbstractDocType> {
    /**
     * Default constructor
     */
-   public AbstractDocType() {
+   public BaseType() {
 
    }
 
@@ -72,7 +63,7 @@ public abstract class AbstractDocType implements Comparable<AbstractDocType> {
     * @param type parameter type
     * @param javadoc parameter documentation
     */
-   public AbstractDocType(String name, String type, String javadoc) {
+   public BaseType(String name, String type, String javadoc) {
       setName(name);
       setType(type);
       setJavadoc(javadoc);
@@ -83,7 +74,7 @@ public abstract class AbstractDocType implements Comparable<AbstractDocType> {
     * 
     * @param classDoc class doc
     */
-   public AbstractDocType(ClassDoc classDoc) {
+   public BaseType(ClassDoc classDoc) {
       setType(classDoc.qualifiedName());
       setJavadoc(trimToNull(classDoc.commentText()));
    }
@@ -94,7 +85,7 @@ public abstract class AbstractDocType implements Comparable<AbstractDocType> {
     * @param param parameter
     * @param tags parameter tags
     */
-   public AbstractDocType(final Parameter param, final ParamTag[] tags) {
+   public BaseType(final Parameter param, final ParamTag[] tags) {
       super();
       initType(param);
       initJavadoc(param, tags);
@@ -205,8 +196,8 @@ public abstract class AbstractDocType implements Comparable<AbstractDocType> {
    @Override
    public boolean equals(final Object obj) {
       boolean result;
-      if (obj instanceof AbstractDocType) {
-         final AbstractDocType param = (AbstractDocType) obj;
+      if (obj instanceof BaseType) {
+         final BaseType param = (BaseType) obj;
          result =
             new EqualsBuilder().append(name, param.getName())
             .append(type, param.getType()).isEquals();
@@ -228,7 +219,7 @@ public abstract class AbstractDocType implements Comparable<AbstractDocType> {
     * {@inheritDoc}
     */
    @Override
-   public int compareTo(final AbstractDocType param) {
+   public int compareTo(final BaseType param) {
       int result;
       if (param == null) {
          result = 1;

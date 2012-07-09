@@ -19,21 +19,13 @@
  */
 package com.iggroup.oss.restdoclet.doclet.type;
 
-import static com.iggroup.oss.restdoclet.doclet.util.AnnotationUtils.elementValue;
-
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.sun.javadoc.AnnotationValue;
-import com.sun.javadoc.ParamTag;
-import com.sun.javadoc.Parameter;
 
 /**
  * This class creates documentation for a request-parameter. These parameters
  * are method-arguments annotated with <code>@RequestParam</code>.
  */
-public class RequestParameter extends AbstractDocType {
+public class RequestParameter extends BaseType {
 
    private static final Logger LOG = Logger.getLogger(RequestParameter.class);
 
@@ -55,77 +47,6 @@ public class RequestParameter extends AbstractDocType {
       super();
    }
 
-   /**
-    * Constructs this parameter from its Java documentation object and Java
-    * documentation tags of the parameters of the method it belongs to.
-    * <p>
-    * The name of this parameter is the value of <code>@RequestParam</code>
-    * annotation. If not defined, the name of its argument is used.
-    * 
-    * @param param the parameter's Java documentation object.
-    * @param tags the Java documentation tags of the parameters of the method
-    *           this parameter belongs to.
-    */
-   public RequestParameter(final Parameter param, final ParamTag[] tags) {
-      super();
-      initName(param);
-      initType(param);
-      initJavadoc(param, tags);
-      initRequired(param, tags);
-      initDefaultValue(param, tags);
-      assertValid();
-   }
-
-   /**
-    * Initialises the name of this parameter.
-    * 
-    * @param param the parameter's Java documentation object.
-    */
-   private void initName(final Parameter param) {
-      final AnnotationValue value =
-         elementValue(param, RequestParam.class, "value");
-      if (value == null) {
-         setName(param.name());
-      } else {
-         if (StringUtils.isBlank(value.value().toString())) {
-            setName(param.name());
-         } else {
-            setName(value.value().toString().trim());
-         }
-      }
-   }
-
-   /**
-    * Initialises the required value of this parameter.
-    * 
-    * @param param the parameter's Java documentation object.
-    * @param tags the Java documentation tags of the parameters of the method
-    *           this parameter belongs to.
-    */
-   private void initRequired(final Parameter param, final ParamTag[] tags) {
-      final AnnotationValue value =
-         elementValue(param, RequestParam.class, "required");
-      if (value != null) {
-         required = Boolean.getBoolean(value.value().toString().trim());
-      }
-
-   }
-
-   /**
-    * Initialises the default value of this parameter.
-    * 
-    * @param param the parameter's Java documentation object.
-    * @param tags the Java documentation tags of the parameters of the method
-    *           this parameter belongs to.
-    */
-   private void initDefaultValue(final Parameter param, final ParamTag[] tags) {
-      final AnnotationValue value =
-         elementValue(param, RequestParam.class, "defaultValue");
-      if (value != null) {
-         defaultValue = value.value().toString().trim();
-      }
-
-   }
 
    /**
     * Returns whether this parameter is required or not

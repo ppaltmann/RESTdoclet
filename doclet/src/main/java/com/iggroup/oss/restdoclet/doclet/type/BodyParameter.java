@@ -19,13 +19,6 @@
  */
 package com.iggroup.oss.restdoclet.doclet.type;
 
-import static com.iggroup.oss.restdoclet.doclet.util.AnnotationUtils.elementValue;
-
-import org.springframework.web.bind.annotation.RequestBody;
-
-import com.sun.javadoc.AnnotationValue;
-import com.sun.javadoc.ParamTag;
-import com.sun.javadoc.Parameter;
 
 /**
  * This class creates documentation for a model-parameter.
@@ -40,25 +33,5 @@ public class BodyParameter extends FieldedParameter {
       super();
    }
 
-   /**
-    * Constructs this parameter from its Java documentation object and Java
-    * documentation tags of the parameters of the method it belongs to.
-    * <p>
-    * The name of this parameter is the value of <code>@RequestBody</code>
-    * annotation. If not defined, the name of its argument is used.
-    * 
-    * @param param the parameter's Java documentation object.
-    * @param tags the Java documentation tags of the parameters of the method
-    *           this parameter belongs to.
-    */
-   public BodyParameter(final Parameter param, final ParamTag[] tags) {
-      super(param, tags);
-      assertValid();
-   }
-
-   @Override
-   protected AnnotationValue getAnnotationValue(final Parameter param) {
-      return elementValue(param, RequestBody.class, "value");
-   }
 
 }

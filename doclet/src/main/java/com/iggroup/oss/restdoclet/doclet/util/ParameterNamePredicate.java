@@ -22,7 +22,7 @@ package com.iggroup.oss.restdoclet.doclet.util;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.StringUtils;
 
-import com.iggroup.oss.restdoclet.doclet.type.AbstractDocType;
+import com.iggroup.oss.restdoclet.doclet.type.BaseType;
 
 /**
  * This predicate is used to search a parameter by its name.
@@ -64,10 +64,11 @@ public class ParameterNamePredicate implements Predicate {
    /**
     * {@inheritDoc}
     */
+   @Override
    public boolean evaluate(final Object object) {
       boolean result;
-      if (object instanceof AbstractDocType
-            && StringUtils.equals(name, ((AbstractDocType) object).getName())) {
+      if (object instanceof BaseType
+         && StringUtils.equals(name, ((BaseType) object).getName())) {
          result = true;
       } else {
          result = false;
