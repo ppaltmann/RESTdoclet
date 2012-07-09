@@ -326,6 +326,7 @@
 
 			</plugins>
 		</pluginManagement>
+		<!-- 
 		<plugins> <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>license-maven-plugin</artifactId> 
 			<inherited>true</inherited> <configuration> <verbose>true</verbose> <addSvnKeyWords>false</addSvnKeyWords> 
 			<dryRun>false</dryRun> </configuration> <executions> <execution> <id>copyright 
@@ -333,7 +334,7 @@
 			</goals> <configuration> <licenseName>apache_v2</licenseName> <roots> <root>src/main/java</root> 
 			<root>src/test</root> </roots> </configuration> </execution> </executions> 
 			</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
-			</plugin> </plugins>
+			</plugin> </plugins>-->
 	</build>
 	<scm>
 		<connection>scm:svn:http://svn.iggroup.local/repos/SandBox/RESTDoc-OSS</connection>
