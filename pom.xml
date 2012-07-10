@@ -341,7 +341,7 @@
 			</plugin> </plugins>-->
 	</build>
 	
-	<!-- Link to version control.  Not required to build external to IG Group -->
+	<!-- Link to version control.  RESTdoclet requires this to build but the url location is configurable -->
 	<scm>
 		<connection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</connection>
 		<developerConnection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</developerConnection>
