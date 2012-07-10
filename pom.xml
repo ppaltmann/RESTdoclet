@@ -42,6 +42,10 @@
 		<standard.version>1.1.2</standard.version>
 		<tools.version>1.5.1</tools.version>
 		<aspectj.version>1.6.2</aspectj.version>
+		<tools.jar>${java.home}/../lib/tools.jar</tools.jar>
+		<!--  if building on Mac
+        <tools.jar>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar</tools.jar>
+        -->
 
 	</properties>
 
@@ -309,7 +313,7 @@
 							<id>tools-install</id>
 							<phase>validate</phase>
 							<configuration>
-								<file>${java.home}/../lib/tools.jar</file>
+								<file>${tools.jar}</file>
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>com.sun</groupId>
 								<artifactId>tools</artifactId>
@@ -326,7 +330,7 @@
 
 			</plugins>
 		</pluginManagement>
-		<!-- 
+		<!-- Plugin to auto populate license information
 		<plugins> <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>license-maven-plugin</artifactId> 
 			<inherited>true</inherited> <configuration> <verbose>true</verbose> <addSvnKeyWords>false</addSvnKeyWords> 
 			<dryRun>false</dryRun> </configuration> <executions> <execution> <id>copyright 
@@ -336,10 +340,12 @@
 			</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
 			</plugin> </plugins>-->
 	</build>
+	
+	<!-- Link to version control.  Not required to build external to IG Group -->
 	<scm>
-		<connection>scm:svn:http://svn.iggroup.local/repos/SandBox/RESTDoc-OSS</connection>
-		<developerConnection>scm:svn:http://svn.iggroup.local/repos/SandBox/RESTDoc-OSS</developerConnection>
-		<url>http://svn.iggroup.local/repos/SandBox/RESTDoc-OSS</url>
+		<connection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</connection>
+		<developerConnection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</developerConnection>
+		<url>http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</url>
 	</scm>
 
 
