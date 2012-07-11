@@ -42,12 +42,34 @@
 		<standard.version>1.1.2</standard.version>
 		<tools.version>1.5.1</tools.version>
 		<aspectj.version>1.6.2</aspectj.version>
-		<tools.jar>${java.home}/../lib/tools.jar</tools.jar>
-		<!--  if building on Mac
-        <tools.jar>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar</tools.jar>
-        -->
-
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>default-profile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<file>
+					<exists>${java.home}/../lib/tools.jar</exists>
+				</file>
+			</activation>
+			<properties>
+				<toolsjar>${java.home}/../lib/tools.jar</toolsjar>
+			</properties>
+		</profile>
+		<profile>
+			<id>mac-profile</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<file>
+					<exists>${java.home}/../Classes/classes.jar</exists>
+				</file>
+			</activation>
+			<properties>
+				<toolsjar>${java.home}/../Classes/classes.jar</toolsjar>
+			</properties>
+		</profile>
+	</profiles>
 
 	<dependencyManagement>
 		<dependencies>
@@ -313,7 +335,7 @@
 							<id>tools-install</id>
 							<phase>validate</phase>
 							<configuration>
-								<file>${tools.jar}</file>
+								<file>${toolsjar}</file>
 								<repositoryLayout>default</repositoryLayout>
 								<groupId>com.sun</groupId>
 								<artifactId>tools</artifactId>
@@ -330,18 +352,19 @@
 
 			</plugins>
 		</pluginManagement>
-		<!-- Plugin to auto populate license information
-		<plugins> <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>license-maven-plugin</artifactId> 
-			<inherited>true</inherited> <configuration> <verbose>true</verbose> <addSvnKeyWords>false</addSvnKeyWords> 
+		<!-- Plugin to auto populate license information <plugins> <plugin> <groupId>org.codehaus.mojo</groupId> 
+			<artifactId>license-maven-plugin</artifactId> <inherited>true</inherited> 
+			<configuration> <verbose>true</verbose> <addSvnKeyWords>false</addSvnKeyWords> 
 			<dryRun>false</dryRun> </configuration> <executions> <execution> <id>copyright 
 			headers</id> <phase>process-sources</phase> <goals> <goal>update-file-header</goal> 
 			</goals> <configuration> <licenseName>apache_v2</licenseName> <roots> <root>src/main/java</root> 
 			<root>src/test</root> </roots> </configuration> </execution> </executions> 
 			</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
-			</plugin> </plugins>-->
+			</plugin> </plugins> -->
 	</build>
-	
-	<!-- Link to version control.  RESTdoclet requires this to build but the url location is configurable -->
+
+	<!-- Link to version control. RESTdoclet requires this to build but the 
+		url location is configurable -->
 	<scm>
 		<connection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</connection>
 		<developerConnection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</developerConnection>
