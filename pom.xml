@@ -69,6 +69,53 @@
 				<toolsjar>${java.home}/../Classes/classes.jar</toolsjar>
 			</properties>
 		</profile>
+      <profile>
+         <id>sonatype-oss-release</id>
+         <build>
+            <plugins>
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-source-plugin</artifactId>
+                  <version>2.1.2</version>
+                  <executions>
+                     <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                           <goal>jar-no-fork</goal>
+                        </goals>
+                     </execution>
+                  </executions>
+               </plugin>
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-javadoc-plugin</artifactId>
+                  <version>2.7</version>
+                  <executions>
+                     <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                           <goal>jar</goal>
+                        </goals>
+                     </execution>
+                  </executions>
+               </plugin>
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-gpg-plugin</artifactId>
+                  <version>1.1</version>
+                  <executions>
+                     <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                           <goal>sign</goal>
+                        </goals>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
 	</profiles>
 
 	<dependencyManagement>
@@ -264,7 +311,17 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-release-plugin</artifactId>
+               <version>2.1</version>
+               <configuration>
+                  <mavenExecutorId>forked-path</mavenExecutorId>
+                  <useReleaseProfile>false</useReleaseProfile>
+                  <arguments>-Psonatype-oss-release</arguments>
+               </configuration>
+            </plugin>
+            <plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.0.2</version>
 					<configuration>
@@ -272,12 +329,6 @@
 						<source>1.6</source>
 						<target>1.6</target>
 					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<inherited>true</inherited>
 				</plugin>
 
 				<plugin>
@@ -346,8 +397,6 @@
 			</plugin> </plugins> -->
 	</build>
 
-	<!-- Link to version control. RESTdoclet requires this to build but the 
-		url location is configurable -->
 	<scm>
 		<connection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</connection>
 		<developerConnection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</developerConnection>
