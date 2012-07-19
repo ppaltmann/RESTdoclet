@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>restdoclet</artifactId>
 		<groupId>com.iggroup.oss.restdoclet</groupId>
-		<version>2.1.1-SNAPSHOT</version>
+		<version>2.1.1</version>
 	</parent>
 
 	<artifactId>restdoclet-plugin</artifactId>
