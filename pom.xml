@@ -402,5 +402,18 @@
       <url>http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/branches/Release</url>
    </scm>
 
+   <distributionManagement>
+       <repository>
+           <id>ig.releases</id>
+           <name>ig-repository</name>
+           <url>${maven.repo.url.releases}</url>
+       </repository>
+
+       <snapshotRepository>
+           <id>ig.snapshots</id>
+           <name>ig-repository</name>
+           <url>${maven.repo.url.snapshots}</url>
+       </snapshotRepository>
+   </distributionManagement>
 
 </project>
