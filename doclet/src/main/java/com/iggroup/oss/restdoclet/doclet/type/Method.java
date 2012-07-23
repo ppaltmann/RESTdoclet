@@ -161,7 +161,7 @@ public class Method implements Comparable<Method> {
     * @param javadoc the method's documentation.
     */
    public void setJavadoc(final String javadoc) {
-      this.javadoc = trimToNull(javadoc);
+      this.javadoc = javadoc;
    }
 
    /**
