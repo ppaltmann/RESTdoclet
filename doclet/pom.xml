@@ -106,12 +106,6 @@
 		</resources>
 
 		<plugins>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-install-plugin</artifactId> 
-				<version>2.3.1</version> <executions> <execution> <id>tools-install</id> 
-				<phase>validate</phase> <configuration> <file>${toolsjar}</file> <repositoryLayout>default</repositoryLayout> 
-				<groupId>com.sun</groupId> <artifactId>tools</artifactId> <version>1.4.2</version> 
-				<packaging>jar</packaging> <generatePom>true</generatePom> </configuration> 
-				<goals> <goal>install-file</goal> </goals> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.jibx</groupId>
 				<artifactId>maven-jibx-plugin</artifactId>
