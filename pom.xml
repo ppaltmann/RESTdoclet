@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.iggroup.oss.restdoclet</groupId>
 	<artifactId>restdoclet</artifactId>
@@ -43,53 +45,53 @@
 
 	<profiles>
 
-      <profile>
-         <id>sonatype-oss-release</id>
-         <build>
-            <plugins>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-source-plugin</artifactId>
-                  <version>2.1.2</version>
-                  <executions>
-                     <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                           <goal>jar-no-fork</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-javadoc-plugin</artifactId>
-                  <version>2.7</version>
-                  <executions>
-                     <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                           <goal>jar</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-gpg-plugin</artifactId>
-                  <version>1.1</version>
-                  <executions>
-                     <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                           <goal>sign</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin>
-            </plugins>
-         </build>
-      </profile>
+		<profile>
+			<id>sonatype-oss-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.1.2</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.7</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.1</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 	<dependencyManagement>
@@ -244,17 +246,17 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-release-plugin</artifactId>
-               <version>2.1</version>
-               <configuration>
-                  <mavenExecutorId>forked-path</mavenExecutorId>
-                  <useReleaseProfile>false</useReleaseProfile>
-                  <arguments>-Psonatype-oss-release</arguments>
-               </configuration>
-            </plugin>
-            <plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<mavenExecutorId>forked-path</mavenExecutorId>
+						<useReleaseProfile>false</useReleaseProfile>
+						<arguments>-Psonatype-oss-release</arguments>
+					</configuration>
+				</plugin>
+				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.0.2</version>
 					<configuration>
@@ -268,7 +270,13 @@
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>2.4</version>
 				</plugin>
-
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.1.1</version>
+				</plugin>
+				
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
@@ -307,7 +315,7 @@
 			</plugin> </plugins> -->
 	</build>
 
-    <!-- Link to version control. RESTdoclet requires this to build but the 
+	<!-- Link to version control. RESTdoclet requires this to build but the 
 		url location is configurable -->
 	<scm>
 		<connection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</connection>
@@ -315,18 +323,18 @@
 		<url>http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</url>
 	</scm>
 
-   <distributionManagement>
-       <repository>
-           <id>ig.releases</id>
-           <name>ig-repository</name>
-           <url>${maven.repo.url.releases}</url>
-       </repository>
+	<distributionManagement>
+		<repository>
+			<id>ig.releases</id>
+			<name>ig-repository</name>
+			<url>${maven.repo.url.releases}</url>
+		</repository>
 
-       <snapshotRepository>
-           <id>ig.snapshots</id>
-           <name>ig-repository</name>
-           <url>${maven.repo.url.snapshots}</url>
-       </snapshotRepository>
-   </distributionManagement>
+		<snapshotRepository>
+			<id>ig.snapshots</id>
+			<name>ig-repository</name>
+			<url>${maven.repo.url.snapshots}</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
