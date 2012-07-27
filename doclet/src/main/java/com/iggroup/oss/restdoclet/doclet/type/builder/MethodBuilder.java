@@ -73,6 +73,9 @@ public class MethodBuilder {
     */
    public Method build(Method method, final MethodDoc methodDoc) {
 
+      assert method != null;
+      assert methodDoc != null;
+
       LOG.info("Initialising method: " + methodDoc);
       initName(method, methodDoc);
       initRequestMethod(method, methodDoc);
@@ -106,6 +109,8 @@ public class MethodBuilder {
       final AnnotationValue value =
          elementValue(methodDoc, RequestMapping.class, "method");
 
+      LOG.debug(method.getName());
+
       if (value == null) {
          /* default */
          LOG.debug("No method found.... defaulting to GET");
@@ -134,6 +139,9 @@ public class MethodBuilder {
     * @param methodDoc the method's Java documentation object.
     */
    private void initJavadoc(Method method, final MethodDoc methodDoc) {
+
+      LOG.debug(method.getName());
+
       method.setJavadoc(methodDoc.commentText());
       LOG.debug(method.getJavadoc());
       if (method.getJavadoc().contains("@inheritDoc")) {
@@ -148,6 +156,7 @@ public class MethodBuilder {
             }
          }
       }
+      LOG.debug(method.getJavadoc());
       if (method.getJavadoc().contains("@inheritDoc")) {
          // Look in interfaces for javadoc
          ClassDoc containingClass = methodDoc.containingClass();
@@ -161,6 +170,7 @@ public class MethodBuilder {
             }
          }
       }
+      LOG.debug(method.getJavadoc());
    }
 
    /**
@@ -171,6 +181,7 @@ public class MethodBuilder {
     */
    private void initRequestParams(Method method, final Parameter[] params,
                                   final ParamTag[] tags) {
+      LOG.debug(method.getName());
       ArrayList<RequestParameter> requestParams =
          new ArrayList<RequestParameter>();
       for (Parameter param : params) {
@@ -191,6 +202,7 @@ public class MethodBuilder {
     */
    private void initPathParams(Method method, final Parameter[] params,
                                final ParamTag[] tags) {
+      LOG.debug(method.getName());
       ArrayList<PathParameter> pathParams = new ArrayList<PathParameter>();
       for (Parameter param : params) {
          if (isAnnotated(param, PathVariable.class)) {
@@ -209,6 +221,7 @@ public class MethodBuilder {
     */
    private void initModelParams(Method method, final Parameter[] params,
                                 final ParamTag[] tags) {
+      LOG.debug(method.getName());
       ArrayList<ModelParameter> modelParams = new ArrayList<ModelParameter>();
       for (Parameter param : params) {
          if (isAnnotated(param, ModelAttribute.class)) {
@@ -227,6 +240,7 @@ public class MethodBuilder {
     */
    private void initBodyParams(Method method, final Parameter[] params,
                                final ParamTag[] tags) {
+      LOG.debug(method.getName());
       ArrayList<BodyParameter> bodyParams = new ArrayList<BodyParameter>();
       for (Parameter param : params) {
          if (isAnnotated(param, RequestBody.class)) {
@@ -244,8 +258,7 @@ public class MethodBuilder {
     */
    private void initRestParams(Method method, final MethodDoc methodDoc) {
 
-      LOG.debug("Getting REST params ...");
-
+      LOG.debug(method.getName());
       ArrayList<RestParameter> restParams = new ArrayList<RestParameter>();
 
       for (NameValuePair pair : new RequestMappingParamsParser(elementValue(

@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>restdoclet</artifactId>
-		<groupId>com.iggroup.oss.restdoclet</groupId>
-		<version>2.1.2-SNAPSHOT</version>
-	</parent>
+      <artifactId>restdoclet</artifactId>
+      <groupId>com.iggroup.oss.restdoclet</groupId>
+      <version>2.2.0-SNAPSHOT</version>
+   </parent>
 
 	<artifactId>restdoclet-sample</artifactId>
 	<packaging>war</packaging>
@@ -52,34 +52,41 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- SPRING WEB -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- SPRING AOP AND INSTRUMENTATION -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -160,7 +167,7 @@
 								<dependencySourceInclude>com.iggroup.oss.sample*:*</dependencySourceInclude>
 							</dependencySourceIncludes>
 							<includeTransitiveDependencySources>false</includeTransitiveDependencySources>
-							<additionalJOption>-J-DRESTDOCLET_LOGGING=${RESTDOCLET_LOGGING}</additionalJOption>
+							<additionalJOption>-J-DRESTDOCLET_LOGGING=${RESTDOCLET_LOGGING} -J-XX:-UseSplitVerifier</additionalJOption>
 						</configuration>
 						<executions>
 							<execution>

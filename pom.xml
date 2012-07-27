@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.iggroup.oss.restdoclet</groupId>
 	<artifactId>restdoclet</artifactId>
 	<packaging>pom</packaging>
-	<version>2.1.2-SNAPSHOT</version>
+	<version>2.2.0-SNAPSHOT</version>
 	<name>RestDoclet</name>
 	<inceptionYear>2012</inceptionYear>
 	<organization>
@@ -39,82 +40,58 @@
 		<log4j.version>1.2.15</log4j.version>
 		<spring.version>3.1.0.RELEASE</spring.version>
 		<standard.version>1.1.2</standard.version>
-		<tools.version>1.5.1</tools.version>
 		<aspectj.version>1.6.2</aspectj.version>
 	</properties>
 
 	<profiles>
+
 		<profile>
-			<id>default-profile</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-				<file>
-					<exists>${java.home}/../lib/tools.jar</exists>
-				</file>
-			</activation>
-			<properties>
-				<toolsjar>${java.home}/../lib/tools.jar</toolsjar>
-			</properties>
+			<id>sonatype-oss-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.1.2</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.7</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.1</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
-		<profile>
-			<id>mac-profile</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-				<file>
-					<exists>${java.home}/../Classes/classes.jar</exists>
-				</file>
-			</activation>
-			<properties>
-				<toolsjar>${java.home}/../Classes/classes.jar</toolsjar>
-			</properties>
-		</profile>
-      <profile>
-         <id>sonatype-oss-release</id>
-         <build>
-            <plugins>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-source-plugin</artifactId>
-                  <version>2.1.2</version>
-                  <executions>
-                     <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                           <goal>jar-no-fork</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-javadoc-plugin</artifactId>
-                  <version>2.7</version>
-                  <executions>
-                     <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                           <goal>jar</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-gpg-plugin</artifactId>
-                  <version>1.1</version>
-                  <executions>
-                     <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                           <goal>sign</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin>
-            </plugins>
-         </build>
-      </profile>
 	</profiles>
 
 	<dependencyManagement>
@@ -176,8 +153,8 @@
 				<version>${log4j.version}</version>
 				<exclusions>
 					<exclusion>
-						<groupId>javax.jms</groupId>
-						<artifactId>jms</artifactId>
+						<groupId>javax.mail</groupId>
+						<artifactId>mail</artifactId>
 					</exclusion>
 					<exclusion>
 						<groupId>javax.jms</groupId>
@@ -232,47 +209,6 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<dependency>
 				<groupId>cglib</groupId>
 				<artifactId>cglib</artifactId>
 				<version>2.2</version>
@@ -310,17 +246,17 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-release-plugin</artifactId>
-               <version>2.1</version>
-               <configuration>
-                  <mavenExecutorId>forked-path</mavenExecutorId>
-                  <useReleaseProfile>false</useReleaseProfile>
-                  <arguments>-Psonatype-oss-release</arguments>
-               </configuration>
-            </plugin>
-            <plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<mavenExecutorId>forked-path</mavenExecutorId>
+						<useReleaseProfile>false</useReleaseProfile>
+						<arguments>-Psonatype-oss-release</arguments>
+					</configuration>
+				</plugin>
+				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.0.2</version>
 					<configuration>
@@ -334,7 +270,13 @@
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>2.4</version>
 				</plugin>
-
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.1.1</version>
+				</plugin>
+				
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
@@ -359,29 +301,6 @@
 						</includes>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>2.3.1</version>
-					<executions>
-						<execution>
-							<id>tools-install</id>
-							<phase>validate</phase>
-							<configuration>
-								<file>${toolsjar}</file>
-								<repositoryLayout>default</repositoryLayout>
-								<groupId>com.sun</groupId>
-								<artifactId>tools</artifactId>
-								<version>1.4.2</version>
-								<packaging>jar</packaging>
-								<generatePom>true</generatePom>
-							</configuration>
-							<goals>
-								<goal>install-file</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
 
 			</plugins>
 		</pluginManagement>
@@ -396,24 +315,26 @@
 			</plugin> </plugins> -->
 	</build>
 
+	<!-- Link to version control. RESTdoclet requires this to build but the 
+		url location is configurable -->
 	<scm>
-      <connection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/branches/Release</connection>
-      <developerConnection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/branches/Release</developerConnection>
-      <url>http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/branches/Release</url>
-   </scm>
+		<connection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</connection>
+		<developerConnection>scm:svn:http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</developerConnection>
+		<url>http://svn.iggroup.local/repos/WebTrading/OpenSource/RESTdoclet/trunk</url>
+	</scm>
 
-   <distributionManagement>
-       <repository>
-           <id>ig.releases</id>
-           <name>ig-repository</name>
-           <url>${maven.repo.url.releases}</url>
-       </repository>
+	<distributionManagement>
+		<repository>
+			<id>ig.releases</id>
+			<name>ig-repository</name>
+			<url>${maven.repo.url.releases}</url>
+		</repository>
 
-       <snapshotRepository>
-           <id>ig.snapshots</id>
-           <name>ig-repository</name>
-           <url>${maven.repo.url.snapshots}</url>
-       </snapshotRepository>
-   </distributionManagement>
+		<snapshotRepository>
+			<id>ig.snapshots</id>
+			<name>ig-repository</name>
+			<url>${maven.repo.url.snapshots}</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>

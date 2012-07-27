@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>restdoclet</artifactId>
-		<groupId>com.iggroup.oss.restdoclet</groupId>
-		<version>2.1.2-SNAPSHOT</version>
-	</parent>
+      <artifactId>restdoclet</artifactId>
+      <groupId>com.iggroup.oss.restdoclet</groupId>
+      <version>2.2.0-SNAPSHOT</version>
+   </parent>
 
 	<artifactId>restdoclet-web</artifactId>
 	<packaging>war</packaging>
@@ -46,47 +46,6 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jibx</groupId>
-			<artifactId>jibx-run</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
 		</dependency>
 
 		<dependency>
